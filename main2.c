@@ -43,7 +43,8 @@ int main ()
 	printf("%s\n", dash(buf,60));
 	/*SERIAL DISPLAY*/
 	int fd, a; //PREDEFINED INT
-	char *b = "t" , *d = "m" , *e = "l" , *f = "i" , *g = "p" ;
+	char *b = "t" , *d = "m" , *e = "l" , *f = "i" , *g = "h" ;
+	char *B = "T" , *D = "M" , *E = "L" , *F = "I" , *G = "H" ;
 	char *txt1 = "z" , *txt2 = "y" , *txt3 = "x" , *txt4 = "w" , *txt5 = "v" ;
 	char *stat1 = "u" , *stat2 = "s" , *stat3 = "r" , *stat4 = "q" , *stat5 = "n" , *stat6 = "o" ,*stat7 = "k" ;
 	char *gsm1 = "e" , *gsm2 = "f" , *gsm3 = "g" ;
@@ -68,33 +69,33 @@ int main ()
 	//printf("%c",a);
 	//sensor reading*/
 		//moisture reading*/
-          if((a) == *gsm1){
-	digitalread(SOIL_S,HIGH);
-	delay(100);
+          if((a) == *gsm1)
+	  { if(digitalread(SOIL_S) == 1)
+		  { delay(100);
 	printf("no moisture");
 	fflush(stdout);
 	serialPutchar(fd, *stat4);
 	}
-	else{
+	else if(digitalread(SOIL_S) == 0){
 	delay(100);
 	printf("sufficient moisture");
 	fflush(stdout);
 	serialPutchar(fd, *stat3);
-	}
+	}}
 		//light readings*/
-		if((a) == *gsm2){
-	digitalread(LIGHT_S,HIGH);
-	delay(100);
+		if((a) == *gsm2)
+		{ if(digitalread(LIGHT_S) == 1)
+		{ delay(100);
 	printf("switch off light");
 	fflush(stdout);
 	serialPutchar(fd, *stat5);
 	}
-	else{
+	else if(digitalread(LIGHT_S) == 0){
 	delay(100);
 	printf("switch on light");
 	fflush(stdout);
 	serialPutchar(fd, *stat6);
-	}
+	}}
 		//temp reading*/
 		 if((a) == *gsm3){
 	//call temp reading fun here*/
@@ -127,6 +128,10 @@ int main ()
 	}
 	else{
 	digitalWrite(RELAY,LOW);
+		delay(100);
+	printf("RELAY1\n");
+	fflush(stdout);
+	serialPutchar(fd, *txt1);
 	}
 	if((a) == *d){
 	digitalWrite(RELAY2,HIGH);
