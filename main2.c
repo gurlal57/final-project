@@ -92,7 +92,7 @@ int main ()
 	printf("%s\n", dash(buf,60));
 	/*SERIAL DISPLAY*/
 	int fd, a; //PREDEFINED INT
-	char *b = "t" , *d = "m" , *e = "l" , *f = "i" , *g = "h" ;
+	char *b = "m" , *d = "t" , *e = "l" , *f = "i" , *g = "h" ;
 	char *B = "T" , *D = "M" , *E = "L" , *F = "I" , *G = "H" ;
 	char *txt1 = "z" , *txt2 = "y" , *txt3 = "x" , *txt4 = "w" , *txt5 = "v" ;
 	char *stat1 = "u" , *stat2 = "s" , *stat3 = "r" , *stat4 = "q" , *stat5 = "n" , *stat6 = "o" ,*stat7 = "k" ;
