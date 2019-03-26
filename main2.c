@@ -119,13 +119,13 @@ int main ()
 	//sensor reading*/
 		//moisture reading*/
           if((a) == *gsm1)
-	  { if(digitalread(SOIL_S) == 1)
+	  { if(digitalRead(SOIL_S) == 1)
 		  { delay(100);
 	printf("no moisture");
 	fflush(stdout);
 	serialPutchar(fd, *stat4);
 	}
-	else if(digitalread(SOIL_S) == 0){
+	else if(digitalRead(SOIL_S) == 0){
 	delay(100);
 	printf("sufficient moisture");
 	fflush(stdout);
@@ -133,7 +133,7 @@ int main ()
 	}}
 		//light readings*/
 		if((a) == *gsm2)
-		{ if(digitalread(LIGHT_S) == 1)
+		{ if(digitalRead(LIGHT_S) == 1)
 		{ delay(100);
 	printf("switch off light");
 	fflush(stdout);
@@ -166,7 +166,7 @@ int main ()
 	printf("normal temp");
 	fflush(stdout);
 	serialPutchar(fd, *stat7);		 
-		 }
+		 }}
 		//driving output relays*/
 	if((a) == *b){
 	digitalWrite(RELAY,HIGH);
