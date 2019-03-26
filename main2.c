@@ -139,7 +139,7 @@ int main ()
 	fflush(stdout);
 	serialPutchar(fd, *stat5);
 	}
-	else if(digitalread(LIGHT_S) == 0){
+	else if(digitalRead(LIGHT_S) == 0){
 	delay(100);
 	printf("switch on light");
 	fflush(stdout);
@@ -174,6 +174,7 @@ int main ()
 	printf("RELAY1\n");
 	fflush(stdout);
 	serialPutchar(fd, *txt1);
+		
 	}
 	else{
 	digitalWrite(RELAY,LOW);
