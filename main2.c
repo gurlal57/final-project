@@ -59,7 +59,7 @@ DIR *dir;
 	
 /*DECLARAION OF RASPBERRYPI PINS*/
 #define RELAY 9 	//SOIL
-#define RELAY2 11 	//TEMPERATURE
+#define RELAY2 11 	//fan
 #define RELAY3 0 	//LDR
 #define RELAY4 5 	//ION
 #define RELAY5 6 	//HEATER
