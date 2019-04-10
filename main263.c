@@ -92,8 +92,8 @@ int main ()
         int fd, a; //PREDEFINED INT
         char *b = "t" , *d = "m" , *e = "l" , *f = "i" , *g = "h" ;
         char *B = "T" , *D = "M" , *E = "L" , *F = "I" , *G = "H" ;
-        char *txt1 = "z" , *txt2 = "y" , *txt3 = "x" , *txt4 = "w" , *txt5 = "v$
-        char *stat1 = "u" , *stat2 = "s" , *stat3 = "r" , *stat4 = "q" , *stat5$
+        char *txt1 = "z" , *txt2 = "y" , *txt3 = "x" , *txt4 = "w" , *txt5 = "v';
+        char *stat1 = "u" , *stat2 = "s" , *stat3 = "r" , *stat4 = "q" , *stat5;
         char *gsm1 = "e" , *gsm2 = "f" , *gsm3 = "g" ;
                 fd = serialOpen("/dev/ttyAMA0",115200); //UART at 115200, ttyAMA0.
         /*GPIO*/
@@ -178,7 +178,7 @@ int main ()
                 delay(100);
         printf("RELAY1\n");
         fflush(stdout);
-        serialPutchar(fd, *txt1);
+        serialPutchar(fd, *B);
         }
         if((a) == *d){
         digitalWrite(RELAY2,HIGH);
@@ -189,6 +189,10 @@ int main ()
         }
         else{
         digitalWrite(RELAY2,LOW);
+         delay(100);
+        printf("RELAY1\n");
+        fflush(stdout);
+        serialPutchar(fd, *D);
         }
         if((a) == *e){
         digitalWrite(RELAY3,HIGH);
@@ -198,6 +202,10 @@ int main ()
         }
         else{
         digitalWrite(RELAY3,LOW);
+         delay(100);
+        printf("RELAY1\n");
+        fflush(stdout);
+        serialPutchar(fd, *E);
         }
         if((a) == *f){
         digitalWrite(RELAY4,HIGH);
@@ -207,6 +215,10 @@ int main ()
         }
         else{
         digitalWrite(RELAY4,LOW);
+         delay(100);
+        printf("RELAY1\n");
+        fflush(stdout);
+        serialPutchar(fd, *F);
         }
         if((a) == *g){
         digitalWrite(RELAY5,HIGH);
@@ -215,6 +227,10 @@ int main ()
         serialPutchar(fd, *txt5);
         }
         else{        digitalWrite(RELAY5,LOW);
+             delay(100);
+        printf("RELAY1\n");
+        fflush(stdout);
+        serialPutchar(fd, *G);
         }
 }
 }
