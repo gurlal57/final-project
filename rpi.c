@@ -88,7 +88,7 @@ char buf[60];
         char *B = "M" , *D = "T" , *E = "L" , *F = "I" , *G = "H" ;
         char *txt1 = "z" , *txt2 = "y" , *txt3 = "x" , *txt4 = "w" , *txt5 = "v";
         char *stat1 = "u" , *stat2 = "s" , *stat3 = "r" , *stat4 = "q" , *stat5 ="p" , *stat7 ="k" , *stat6 ="o";
-        char *gsm1 = "e" , *gsm2 = "f" , *gsm3 = "g" ;
+        char *gsm1 = "e" , *gsm2 = "f" , *gsm3 = "a" ;
 		
 		//***************OPENING PI SERIAL*************//
                 fd = serialOpen("/dev/ttyAMA0",9600); //UART at 115200, ttyAMA0.
@@ -133,14 +133,14 @@ char buf[60];
                 if((a) == *gsm2)
                 { if(digitalRead(LIGHT_S) == 1)
                 { delay(100);
-        printf("switch off light");
+        printf("no light");
         fflush(stdout);
                 serialPutchar(fd, *stat5);
         }
 
  else if(digitalRead(LIGHT_S) == 0){
         delay(100);
-        printf("switch on light");
+        printf(" light is on");
         fflush(stdout);
         serialPutchar(fd, *stat6);
         }}
@@ -172,7 +172,7 @@ char buf[60];
         if((a) == *b){
         digitalWrite(RELAY,HIGH);
         delay(100);
-        printf("RELAY1\n");
+        printf("RELAY1 is on\n");
         fflush(stdout);
         serialPutchar(fd, *txt1);
         }
