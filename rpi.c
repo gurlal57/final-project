@@ -94,6 +94,7 @@ char buf[60];
         int fd, a; //PREDEFINED INT
         char *b = "m" , *d = "t" , *e = "l" , *f = "i" , *g = "h" ;
         char *B = "M" , *D = "T" , *E = "L" , *F = "I" , *G = "H" ;
+	char *txt6 = "Z" , *txt7 = "Y" , *txt8 = "X" , *txt9 = "W" , *txt10 = "V" ;
         char *txt1 = "z" , *txt2 = "y" , *txt3 = "x" , *txt4 = "w" , *txt5 = "v";
         char *stat1 = "u" , *stat2 = "s" , *stat3 = "r" , *stat4 = "q" , *stat5 ="p" , *stat7 ="k" , *stat6 ="o";
         char *gsm1 = "e" , *gsm2 = "f" , *gsm3 = "a" ;
@@ -184,12 +185,13 @@ char buf[60];
         fflush(stdout);
         serialPutchar(fd, *txt1);
         }
-        else{
+        else if((a) == *B)
+	{
         digitalWrite(RELAY,LOW);
                 delay(100);
         printf("RELAY1 is off\n");
         fflush(stdout);
-        serialPutchar(fd, *B);
+        serialPutchar(fd, *txt6);
         }
 		
 		///************COOLING FAN**************///
@@ -200,12 +202,13 @@ char buf[60];
         fflush(stdout);
                 serialPutchar(fd, *txt2);
         }
-        else{
+        else ((a) == *D)
+	{
         digitalWrite(RELAY2,LOW);
          delay(100);
         printf("RELAY2 is off\n");
         fflush(stdout);
-        serialPutchar(fd, *D);
+        serialPutchar(fd, *txt7);
         }
 		
 		///********************LIGHT BULB**********//
@@ -215,12 +218,12 @@ char buf[60];
                fflush(stdout);
         serialPutchar(fd, *txt3);
         }
-        else{
+        else if((a) == *E){
         digitalWrite(RELAY3,LOW);
          delay(100);
         printf("RELAY3 is off\n");
         fflush(stdout);
-        serialPutchar(fd, *E);
+        serialPutchar(fd, *txt8);
         }
 		
 	//*****************NITROGEN PUMP**************//
@@ -230,26 +233,29 @@ char buf[60];
         fflush(stdout);
         serialPutchar(fd, *txt4);
         }
-        else{
+        else if ((a) == *F)
+	{
         digitalWrite(RELAY4,LOW);
          delay(100);
         printf("RELAY4 is off\n");
           fflush(stdout);
-        serialPutchar(fd, *F);
+        serialPutchar(fd, *txt9);
         }
 		
 		///************HEATER**********///
-        if((a) == *g){
+        if((a) == *g)
+	{
         digitalWrite(RELAY5,HIGH);
         printf("RELAY5 is on\n");
         fflush(stdout);
         serialPutchar(fd, *txt5);
         }
-        else{        digitalWrite(RELAY5,LOW);
+        else if((a) == *G)
+	{        digitalWrite(RELAY5,LOW);
              delay(100);
         printf("RELAY5 is off\n");
         fflush(stdout);
-        serialPutchar(fd, *G);
+        serialPutchar(fd, *txt10);
         }
 }
 }
