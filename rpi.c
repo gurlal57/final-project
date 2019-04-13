@@ -202,7 +202,7 @@ char buf[60];
         fflush(stdout);
                 serialPutchar(fd, *txt2);
         }
-        else ((a) == *D)
+        else if((a) == *D)
 	{
         digitalWrite(RELAY2,LOW);
          delay(100);
