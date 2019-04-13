@@ -37,6 +37,14 @@ DIR *dir;
   perror ("Couldn't open the w1 devices directory");
   return 1;
  }
+  // Assemble path to OneWire device
+ sprintf(devPath, "%s/%s/w1_slave", path, dev);
+ int fd = open(devPath, O_RDONLY);
+  if(fd == -1)
+  {
+   perror ("Couldn't open the w1 device.");
+   return 1;
+  }
   while((numRead = read(fd, buf, 256)) > 0)
   {
    strncpy(tmpData, strstr(buf, "t=") + 2, 5);
@@ -108,7 +116,7 @@ char buf[60];
         pinMode(SOIL_S,INPUT);
         pinMode(TEMP_S,INPUT);
         pinMode(LIGHT_S,INPUT);
-        pinMode(ION_S,INPUT);
+    
 		
         /************INFINITE LOOP TO READ/WRITE SERIAL AND I/Os**********/
         for(;;){
@@ -116,7 +124,6 @@ char buf[60];
         
          //***************moisture reading*******************/
           if((a) == *gsm1)
-    if((a) == *gsm1)
           { if(digitalRead(SOIL_S) == 1)
                   { delay(100);
         printf("no moisture");
@@ -169,8 +176,9 @@ char buf[60];
 				 
      //************************driving output relays*******************/
 	 //*********WATER PUMP*****************////
-        if((a) == *b){
-        digitalWrite(RELAY,HIGH);
+        if((a) == *b)
+	{
+          digitalWrite(RELAY,HIGH);
         delay(100);
         printf("RELAY1 is on\n");
         fflush(stdout);
@@ -179,7 +187,7 @@ char buf[60];
         else{
         digitalWrite(RELAY,LOW);
                 delay(100);
-        printf("RELAY1\n");
+        printf("RELAY1 is off\n");
         fflush(stdout);
         serialPutchar(fd, *B);
         }
@@ -188,14 +196,14 @@ char buf[60];
         if((a) == *d){
         digitalWrite(RELAY2,HIGH);
         delay(100);
-        printf("RELAY2\n");
+        printf("RELAY2 is on\n");
         fflush(stdout);
                 serialPutchar(fd, *txt2);
         }
         else{
         digitalWrite(RELAY2,LOW);
          delay(100);
-        printf("RELAY1\n");
+        printf("RELAY2 is off\n");
         fflush(stdout);
         serialPutchar(fd, *D);
         }
@@ -203,14 +211,14 @@ char buf[60];
 		///********************LIGHT BULB**********//
         if((a) == *e){
         digitalWrite(RELAY3,HIGH);
-        printf("RELAY3\n");
+        printf("RELAY3 is on\n");
                fflush(stdout);
         serialPutchar(fd, *txt3);
         }
         else{
         digitalWrite(RELAY3,LOW);
          delay(100);
-        printf("RELAY1\n");
+        printf("RELAY3 is off\n");
         fflush(stdout);
         serialPutchar(fd, *E);
         }
@@ -218,14 +226,14 @@ char buf[60];
 	//*****************NITROGEN PUMP**************//
         if((a) == *f){
         digitalWrite(RELAY4,HIGH);
-        printf("RELAY4\n");
+        printf("RELAY4 is on\n");
         fflush(stdout);
         serialPutchar(fd, *txt4);
         }
         else{
         digitalWrite(RELAY4,LOW);
          delay(100);
-        printf("RELAY1\n");
+        printf("RELAY4 is off\n");
           fflush(stdout);
         serialPutchar(fd, *F);
         }
@@ -233,13 +241,13 @@ char buf[60];
 		///************HEATER**********///
         if((a) == *g){
         digitalWrite(RELAY5,HIGH);
-        printf("RELAY5\n");
+        printf("RELAY5 is on\n");
         fflush(stdout);
         serialPutchar(fd, *txt5);
         }
         else{        digitalWrite(RELAY5,LOW);
              delay(100);
-        printf("RELAY1\n");
+        printf("RELAY5 is off\n");
         fflush(stdout);
         serialPutchar(fd, *G);
         }
