@@ -76,21 +76,21 @@ void loop() {
     //******************sending char recived from gsm to rpi********************//
     //in below loops we are just asking sensor status for light,moisture and temp//
     
-    if(compchar("m",incoming_char)==0)
+    if(compchar("e",incoming_char)==0)
     {
       delay(1000);
       rpi.write("e");
     }
 
-    if(compchar("t",incoming_char)==0)
+    if(compchar("f",incoming_char)==0)
     {
       delay(1000);
-      rpi.write("g");
+      rpi.write("f");
     }
-    if(compchar("l",incoming_char)==0)
+    if(compchar("a",incoming_char)==0)
     {
       delay(1000);
-      rpi.write("f");}
+      rpi.write("a");}
       
  //********************************in the below loop the value of analog sensoris being read*******************************// 
          if(compchar("g",incoming_char) == 0)
@@ -124,6 +124,33 @@ void loop() {
       delay(1000);
       rpi.write("h");
     }
+	  //***********************gsm message to drive outputs in off state*********************//
+    if(compchar("D",incoming_char)==0)
+    {
+      delay(1000);
+      rpi.write("T");
+    }
+    if(compchar("W",incoming_char)==0)
+    {
+      delay(1000);
+      rpi.write("M");
+    }
+    if(compchar("L",incoming_char)==0)
+    {
+      delay(1000);
+      rpi.write("L");
+    }
+    if(compchar("I",incoming_char)==0)
+    {
+      delay(1000);
+      rpi.write("I");
+    }
+    if(compchar("H",incoming_char)==0)
+    {
+      delay(1000);
+      rpi.write("H");
+    }
+      
       }
 ////***********************************receiving serial data from rpi and calling sta functions******************///
   if (rpi.available()>0)
