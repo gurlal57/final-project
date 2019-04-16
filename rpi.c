@@ -58,12 +58,12 @@ DIR *dir;
 #define RELAY 9         //WATER PUMP
 #define RELAY2 11       //COOLING FAN
 #define RELAY3 0        //LIGHT BULB
-#define RELAY4 5        //NITROGEN PUMP
+#define RELAY4 25        //NITROGEN PUMP
 #define RELAY5 6        //HEATER
 
 //********DEFINING INPUT PINS**********///
 #define SOIL_S 17
-#define TEMP_S 22
+#define TEMP_S 4
 #define LIGHT_S 27
 
 /*************LINES GROUP AND PROJECT INFO************/
@@ -93,7 +93,7 @@ char buf[60];
         /*******************SERIAL DISPLAY****************/
         int fd, a; //PREDEFINED INT
         char *b = "m" , *d = "t" , *e = "l" , *f = "i" , *g = "h" ;
-        char *B = "M" , *D = "T" , *E = "L" , *F = "I" , *G = "H" ;
+        char *B = "W" , *D = "D" , *E = "L" , *F = "I" , *G = "H" ;
 	char *txt6 = "Z" , *txt7 = "Y" , *txt8 = "X" , *txt9 = "W" , *txt10 = "V" ;
         char *txt1 = "z" , *txt2 = "y" , *txt3 = "x" , *txt4 = "w" , *txt5 = "v";
         char *stat1 = "u" , *stat2 = "s" , *stat3 = "r" , *stat4 = "q" , *stat5 ="p" , *stat7 ="k" , *stat6 ="o";
@@ -179,7 +179,7 @@ char buf[60];
 	 //*********WATER PUMP*****************////
         if((a) == *b)
 	{
-          digitalWrite(RELAY,HIGH);
+          digitalWrite(RELAY,LOW);
         delay(100);
         printf("RELAY1 is on\n");
         fflush(stdout);
@@ -187,7 +187,7 @@ char buf[60];
         }
         else if((a) == *B)
 	{
-        digitalWrite(RELAY,LOW);
+        digitalWrite(RELAY,HIGH);
                 delay(100);
         printf("RELAY1 is off\n");
         fflush(stdout);
@@ -196,7 +196,7 @@ char buf[60];
 		
 		///************COOLING FAN**************///
         if((a) == *d){
-        digitalWrite(RELAY2,HIGH);
+        digitalWrite(RELAY2,LOW);
         delay(100);
         printf("RELAY2 is on\n");
         fflush(stdout);
@@ -204,7 +204,7 @@ char buf[60];
         }
         else if((a) == *D)
 	{
-        digitalWrite(RELAY2,LOW);
+        digitalWrite(RELAY2,HIGH);
          delay(100);
         printf("RELAY2 is off\n");
         fflush(stdout);
@@ -213,13 +213,13 @@ char buf[60];
 		
 		///********************LIGHT BULB**********//
         if((a) == *e){
-        digitalWrite(RELAY3,HIGH);
+        digitalWrite(RELAY3,LOW);
         printf("RELAY3 is on\n");
                fflush(stdout);
         serialPutchar(fd, *txt3);
         }
         else if((a) == *E){
-        digitalWrite(RELAY3,LOW);
+        digitalWrite(RELAY3,HIGH);
          delay(100);
         printf("RELAY3 is off\n");
         fflush(stdout);
@@ -228,14 +228,14 @@ char buf[60];
 		
 	//*****************NITROGEN PUMP**************//
         if((a) == *f){
-        digitalWrite(RELAY4,HIGH);
+        digitalWrite(RELAY4,LOW);
         printf("RELAY4 is on\n");
         fflush(stdout);
         serialPutchar(fd, *txt4);
         }
         else if ((a) == *F)
 	{
-        digitalWrite(RELAY4,LOW);
+        digitalWrite(RELAY4,HIGH);
          delay(100);
         printf("RELAY4 is off\n");
           fflush(stdout);
@@ -245,13 +245,13 @@ char buf[60];
 		///************HEATER**********///
         if((a) == *g)
 	{
-        digitalWrite(RELAY5,HIGH);
+        digitalWrite(RELAY5,LOW);
         printf("RELAY5 is on\n");
         fflush(stdout);
         serialPutchar(fd, *txt5);
         }
         else if((a) == *G)
-	{        digitalWrite(RELAY5,LOW);
+	{        digitalWrite(RELAY5,HIGH);
              delay(100);
         printf("RELAY5 is off\n");
         fflush(stdout);
