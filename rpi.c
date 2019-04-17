@@ -93,7 +93,7 @@ char buf[60];
         /*******************SERIAL DISPLAY****************/
         int fd, a; //PREDEFINED INT
         char *b = "m" , *d = "t" , *e = "l" , *f = "i" , *g = "h" ;
-        char *B = "W" , *D = "D" , *E = "L" , *F = "I" , *G = "H" ;
+        char *B = "W" , *D = "D" , *E = "L" , *F = "E" , *G = "H" ;
 	char *txt6 = "Z" , *txt7 = "Y" , *txt8 = "X" , *txt9 = "W" , *txt10 = "V" ;
         char *txt1 = "z" , *txt2 = "y" , *txt3 = "x" , *txt4 = "w" , *txt5 = "v";
         char *stat1 = "u" , *stat2 = "s" , *stat3 = "r" , *stat4 = "q" , *stat5 ="p" , *stat7 ="k" , *stat6 ="o";
