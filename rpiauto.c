@@ -9,7 +9,7 @@
 #include<wiringSerial.h>
 //************function to read the temperature from ds18b20*************/
 
-float tempread(float x)
+float tempread(float *x)
 { float tempc;
 DIR *dir;
  struct dirent *dirent;
@@ -49,6 +49,7 @@ DIR *dir;
   {
    strncpy(tmpData, strstr(buf, "t=") + 2, 5);
    float tempC = strtof(tmpData, NULL);
+	  *x=tempC/1000;
 
   }
   close(fd);
@@ -117,8 +118,12 @@ char buf[60];
         pinMode(SOIL_S,INPUT);
         pinMode(TEMP_S,INPUT);
         pinMode(LIGHT_S,INPUT);
-    
-		
+	
+	digitalWrite(RELAY,HIGH);
+	digitalWrite(RELAY2,HIGH);
+	digitalWrite(RELAY3,HIGH);
+    digitalWrite(RELAY4,HIGH);
+	digitalWrite(RELAY5,HIGH);	
         /************INFINITE LOOP TO READ/WRITE SERIAL AND I/Os**********/
         for(;;){
         a = serialGetchar(fd);
@@ -155,7 +160,8 @@ char buf[60];
         //******************************temp reading*********************/
                  if(((a) == *gsm3) || (digitalread(RELAY5)==0)){
                          //call temp reading fun here*/
-                         tempr = tempread(x);
+                         tempr = tempread(&tempr);
+			 printf("%f",tempr);
                    if (tempr > 22){
         delay(100);
         printf("high temp");
