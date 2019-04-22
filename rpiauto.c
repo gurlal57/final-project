@@ -78,7 +78,7 @@ int main ()
 {        
 /***************DISPLAY - PROJECT,NAME,STUDENT_ID,INSTRUCTORS*************/
 char buf[60];
-        float x,tempr;
+        float y;
 
  printf("%s\n", dash(buf,60));
         printf("PROJECT     : EMBEDDING EMBEDDED IN MUSHROOM GROWING\n");
@@ -158,10 +158,10 @@ char buf[60];
         serialPutchar(fd, *stat6);
         }}
         //******************************temp reading*********************/
-                 if(((a) == *gsm3) || (digitalread(RELAY5)==0)){
+                 if(((a) == *gsm3) || (digitalRead(RELAY5)==0)){
                          //call temp reading fun here*/
-                         tempr = tempread(&tempr);
-			 printf("%f",tempr);
+                         y = tempread(&y);
+			 printf("%f",y);
                    if (tempr > 22){
         delay(100);
         printf("high temp");
